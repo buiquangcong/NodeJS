@@ -1,13 +1,12 @@
 import Product from "../models/product.model";
 
-
-const products = [
-    { id: 1, name: "Áo polo", price: 100 },
-    { id: 2, name: "Quần Jean", price: 300 },
-    { id: 3, name: "Áo Khoác", price: 500 },
-    { id: 4, name: "Giày thể thao", price: 350 },
-    { id: 5, name: "Balo ", price: 250 }
-];
+// const products = [
+//     { id: 1, name: "Áo polo", price: 100 },
+//     { id: 2, name: "Quần Jean", price: 300 },
+//     { id: 3, name: "Áo Khoác", price: 500 },
+//     { id: 4, name: "Giày thể thao", price: 350 },
+//     { id: 5, name: "Balo ", price: 250 }
+// ];
 
 export const getAll = async (req, res) => {
     try {
@@ -46,6 +45,7 @@ export const createOne = async (req, res) => {
 };
 export const updateOne = async (req, res) => {
     try {
+
         const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         return res.json(product);
@@ -61,6 +61,7 @@ export const deleteOne = async (req, res) => {
         await Product.findByIdAndDelete(req.params.id);
 
         return res.json({
+            console: "Deleted successfully",
             success: true,
         });
     } catch (error) {
